@@ -4,11 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IS3 Prototype</title>
-  <link rel="stylesheet" href="css/foundation.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="http://d3js.org/topojson.v1.min.js"></script>
-  <script src="js/vendor/modernizr.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/foundation.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.nouislider.min.css">
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+  <script type="text/javascript" src="js/vendor/modernizr.js"></script>
+  
 </head>
 <body>
   <div class="row full-width wrapper">
@@ -35,95 +39,118 @@
 
           <div id="leftsidebar" class="large-2 columns panel">
             <div class="row">
-              <label>Income</label>
-              <div id="income-slider" class="range-slider" data-slider>
-                <span class="range-slider-handle" role="slider" tabindex="0"></span>
-                <span class="range-slider-active-segment"></span> <input type="hidden">
-              </div>
+              <label style="margin-bottom: 10px;">Income</label>
+              <!-- <div id="income-slider" class="range-slider" data-slider> -->
+              <div id="income-slider" style="margin-left: 15px; margin-right: 15px; margin-bottom: 10px;"></div>
+              <!-- <span class="range-slider-handle" role="slider" tabindex="0"></span> -->
+              <!-- <span class="range-slider-active-segment"></span> <input type="hidden"> -->
+              <!-- </div> -->
             </div>
 
             <div class="row">
-              <label>Employment</label>
-              <div id="employment-slider" class="range-slider" data-slider> <span class="range-slider-handle" role="slider" tabindex="0"></span>
-                <span class="range-slider-active-segment"></span> <input type="hidden"> </div>
-              </div>
-              <label>Check these out</label>
-              <ul class="no-bullet">
-                <li><input id="ch0" type="checkbox"><label for="ch0">0 - 10</label></li>
-                <li><input id="ch10" type="checkbox"><label for="ch10">10 - 20</label></li> 
-                <li><input id="ch20" type="checkbox"><label for="ch20">20 - 30</label></li>
-                <li><input id="ch30" type="checkbox"><label for="ch30">30 - 40</label></li>
-                <li><input id="ch40" type="checkbox"><label for="ch40">40 - 50</label></li> 
-                <li><input id="ch50" type="checkbox"><label for="ch50">50 - 60</label></li>
-                <li><input id="ch60" type="checkbox"><label for="ch60">60 - 70</label></li>
-                <li><input id="ch70" type="checkbox"><label for="ch70">70 - 80</label></li> 
-                <li><input id="ch80" type="checkbox"><label for="ch80">80 - 90</label></li>
-                <li><input id="ch90" type="checkbox"><label for="ch90">90 - 100</label></li>
-              </ul>
+              <label style="margin-bottom: 10px;">Employment</label>
+              <!-- <div id="employment-slider" class="range-slider" data-slider> -->
+              <div id="employ-slider" style="margin-left: 15px; margin-right: 15px; margin-bottom: 10px;"></div>
+              <!-- <span class="range-slider-handle" role="slider" tabindex="0"></span> -->
+              <!-- <span class="range-slider-active-segment"></span> <input type="hidden"> </div> -->
             </div>
-
-            <div class="large-7 columns light-grey-bg-pattern">
-              <h1>Map Here</h1>
-            </div>
-
-            <div id="rightsidebar" class="large-3 columns light-grey-bg-pattern">
-              <label>Select Cities
-                <input type="text" placeholder="Search Cities" />
-              </label>
-              <select id="cities" name="cities" multiple>
-                <option value="Aberdeen City">Aberdeen City</option>
-                <option value="Aberdeenshire">Aberdeenshire</option>
-                <option value="Angus">Angus</option>
-                <option value="Argyll & Bute">Argyll & Bute</option>
-                <option value="Clackmannanshire">Clackmannanshire</option>
-                <option value="Comhairle Nan Eilean Siar">Comhairle Nan Eilean Siar</option>
-                <option value="Dumfries and Galloway">Dumfries and Galloway</option>
-                <option value="Dundee">Dundee</option>
-                <option value="East Ayrshire">East Ayrshire</option>
-                <option value="East Dunbartonshire">East Dunbartonshire</option>
-                <option value="East Lothian">East Lothian</option>
-                <option value="East Renfrewshire">East Renfrewshire</option>
-                <option value="City of Edinburgh">City of Edinburgh</option>
-                <option value="Falkirk">Falkirk</option>
-                <option value="Fife">Fife</option>
-                <option value="Glasgow">Glasgow</option>
-                <option value="Highland">Highland</option>
-                <option value="Inverclyde">Inverclyde</option>
-                <option value="Midlothian">Midlothian</option>
-                <option value="Moray">Moray</option>
-                <option value="North Ayrshire">North Ayrshire</option>
-                <option value="North Lanarkshire">North Lanarkshire</option>
-                <option value="Orkney">Orkney</option>
-                <option value="Perth & Kinross">Perth & Kinross</option>
-                <option value="Renfrewshire">Renfrewshire</option>
-                <option value="Scottish Borders">Scottish Borders</option>
-                <option value="Shetland">Shetland</option>
-                <option value="South Ayrshire">South Ayrshire</option>
-                <option value="South Lanarkshire">South Lanarkshire</option>
-                <option value="Stirling">Stirling</option>
-                <option value="West Dunbartonshire">West Dunbartonshire</option>
-                <option value="West Lothian">West Lothian</option>
-
-              </select>
-            </div>
-
-            <div id="information" class="large-12 columns light-grey-bg-pattern">
-              Population
-            </div>
-
+            <label>Check these out</label>
+            <ul class="no-bullet">
+              <li><input id="ch0" type="checkbox"><label for="ch0">0 - 10</label></li>
+              <li><input id="ch10" type="checkbox"><label for="ch10">10 - 20</label></li> 
+              <li><input id="ch20" type="checkbox"><label for="ch20">20 - 30</label></li>
+              <li><input id="ch30" type="checkbox"><label for="ch30">30 - 40</label></li>
+              <li><input id="ch40" type="checkbox"><label for="ch40">40 - 50</label></li> 
+              <li><input id="ch50" type="checkbox"><label for="ch50">50 - 60</label></li>
+              <li><input id="ch60" type="checkbox"><label for="ch60">60 - 70</label></li>
+              <li><input id="ch70" type="checkbox"><label for="ch70">70 - 80</label></li> 
+              <li><input id="ch80" type="checkbox"><label for="ch80" style="margin-right: 24px;">80 - 90</label><input id="radioYes" type="radio" name="radio" value="Yes" id="radioYes"><label for="radioYes">Yes</label></li>
+              <li><input id="ch90" type="checkbox"><label for="ch90">90 - 100</label><input id="radioNo" type="radio" name="radio" value="No" id="radioNo"><label for="radioNo">No</label></li>
+            </ul>
           </div>
-          <div class="content" id="analyse">
-            <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+
+
+          <div class="large-7 columns light-grey-bg-pattern">
+            <h1>Map Here</h1>
           </div>
+
+          <div id="rightsidebar" class="large-3 columns light-grey-bg-pattern">
+            <label>Select Cities
+              <input type="text" placeholder="Search Cities" />
+            </label>
+            <select id="cities" name="cities" multiple>
+              <option value="Aberdeen City">Aberdeen City</option>
+              <option value="Aberdeenshire">Aberdeenshire</option>
+              <option value="Angus">Angus</option>
+              <option value="Argyll & Bute">Argyll & Bute</option>
+              <option value="Clackmannanshire">Clackmannanshire</option>
+              <option value="Comhairle Nan Eilean Siar">Comhairle Nan Eilean Siar</option>
+              <option value="Dumfries and Galloway">Dumfries and Galloway</option>
+              <option value="Dundee">Dundee</option>
+              <option value="East Ayrshire">East Ayrshire</option>
+              <option value="East Dunbartonshire">East Dunbartonshire</option>
+              <option value="East Lothian">East Lothian</option>
+              <option value="East Renfrewshire">East Renfrewshire</option>
+              <option value="City of Edinburgh">City of Edinburgh</option>
+              <option value="Falkirk">Falkirk</option>
+              <option value="Fife">Fife</option>
+              <option value="Glasgow">Glasgow</option>
+              <option value="Highland">Highland</option>
+              <option value="Inverclyde">Inverclyde</option>
+              <option value="Midlothian">Midlothian</option>
+              <option value="Moray">Moray</option>
+              <option value="North Ayrshire">North Ayrshire</option>
+              <option value="North Lanarkshire">North Lanarkshire</option>
+              <option value="Orkney">Orkney</option>
+              <option value="Perth & Kinross">Perth & Kinross</option>
+              <option value="Renfrewshire">Renfrewshire</option>
+              <option value="Scottish Borders">Scottish Borders</option>
+              <option value="Shetland">Shetland</option>
+              <option value="South Ayrshire">South Ayrshire</option>
+              <option value="South Lanarkshire">South Lanarkshire</option>
+              <option value="Stirling">Stirling</option>
+              <option value="West Dunbartonshire">West Dunbartonshire</option>
+              <option value="West Lothian">West Lothian</option>
+
+            </select>
+          </div>
+
+          <div id="information" class="large-12 columns light-grey-bg-pattern">
+            Population
+          </div>
+        </div>
+
+
+        <div class="content" id="analyse">
+          <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
 
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-  </body>
-  </html>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script type="text/javascript" src="js/jquery.nouislider.all.min.js"></script>
+<script>
+
+  $("#income-slider").noUiSlider({
+    start: [0, 50],
+    range: {
+      'min': 0,
+      'max': 100
+    }
+  });
+
+  $("#employ-slider").noUiSlider({
+    start: [0, 50],
+    range: {
+      'min': 0,
+      'max': 100
+    }
+  });
+  $(document).foundation();
+</script>
+</body>
+</html>
