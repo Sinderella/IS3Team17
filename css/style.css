@@ -1,90 +1,97 @@
 .row {
-	min-width:95% !important;
+    min-width: 95% !important;
+}
+
+[class*="block-grid-"] {
+    &.text-center {
+        > li {
+              float: none;
+              display: inline-block;
+      }
+    }
 }
 
 .light-grey-bg-pattern {
-	background: none repeat scroll 0 0 #f2f2f2;
-    border-color: #d8d8d8;
-    border-style: solid;
-    border-width: 1px;
+    background: none repeat scroll 0 0 #f2f2f2;
+    border: 1px solid #d8d8d8;
     color: #333333;
     margin-bottom: 1.25rem;
     padding: 1.25rem;
 }
 
 .tabs {
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
 
 .tabs-content {
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
 
 .tabs-content > .content {
-	padding: 0px;
+    padding: 0px;
 }
 
 #radioYes {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #radioNo {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #leftsidebar {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #rightsidebar {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #cities {
-	height: 319px;
-	margin-bottom: 0px;
+    height: 339px;
+    margin-bottom: 0px;
 }
 
 #information {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch0 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch10 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch20 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch30 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch40 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch50 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch60 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch70 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch80 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #ch90 {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
