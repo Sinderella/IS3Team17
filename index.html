@@ -13,6 +13,7 @@
     <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
     <script type="text/javascript" src="js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="js/piechart.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
 
 </head>
 <body>
@@ -101,7 +102,7 @@
 
                 <div id="rightsidebar" class="large-3 columns light-grey-bg-pattern">
                     <label>Select Cities
-                        <input type="text" placeholder="Search Cities"/>
+                        <input id="search_cities" type="text" placeholder="Search Cities" onkeyup="filter(this)"/>
                     </label>
                     <select id="cities" name="cities" multiple>
                         <option value="Aberdeen City">Aberdeen City</option>
@@ -176,7 +177,7 @@
             <div class="content" id="analyse">
                 <div class="large-12 columns">
                     <div class="row">
-                        <h3>Graph</h3>
+                        <h3 style="padding-left: 5px;">Graph</h3>
                     </div>
                     <div class="row">
                         <ul class="large-block-grid-2 text-center">

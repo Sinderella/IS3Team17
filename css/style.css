@@ -2,15 +2,6 @@
     min-width: 95% !important;
 }
 
-[class*="block-grid-"] {
-    &.text-center {
-        > li {
-              float: none;
-              display: inline-block;
-      }
-    }
-}
-
 .light-grey-bg-pattern {
     background: none repeat scroll 0 0 #f2f2f2;
     border: 1px solid #d8d8d8;
