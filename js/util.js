@@ -1,3 +1,5 @@
+var graphNo = 0;
+
 function changeInfo(pop, den, yes, no, male, female, elec, vote, reject, area, income, employ, epc) {
     $("#info_pop").text("Population: " + pop);
     $("#info_den").text("Density: " + den);
@@ -16,7 +18,6 @@ function changeInfo(pop, den, yes, no, male, female, elec, vote, reject, area, i
 
 function filter() {
     var value = $("#search_cities").val().toLowerCase();
-    console.log(value);
     $("#cities").find("> option").each(function () {
         if ($(this).text().toLowerCase().search(value) != -1) {
             $(this).show();
@@ -25,4 +26,11 @@ function filter() {
             $(this).hide();
         }
     });
+}
+
+function newGraph(){
+    $('#newGraph' + graphNo).html('<img src="https://www.google.co.uk/logos/2012/birthday12-thp.png">');
+    graphNo++;
+    $("#graphArea").append('<li id="newGraph' + graphNo + '"><a href="#" data-reveal-id="addModal"><img src="img/plus.jpg"></a></li>');
+    $('.close-reveal-modal').click();
 }

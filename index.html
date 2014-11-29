@@ -8,12 +8,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery.nouislider.min.css">
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <link rel="stylesheet" href="dist/themes/default/style.min.css"/>
+
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
     <script type="text/javascript" src="js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="js/piechart.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
+
 
 </head>
 <body>
@@ -163,7 +165,7 @@
                         <label id="info_rejected">Rejected: </label>
                         <label id="info_area">Area: </label>
                     </div>
-                    <div id="information3" class="large-3 columns"style="padding-top: 25px;">
+                    <div id="information3" class="large-3 columns" style="padding-top: 25px;">
                         <label id="info_income">Income: </label>
                         <label id="info_employ">Employment: </label>
                         <label id="info_expenditure">Expenditure per capita(£): </label>
@@ -180,12 +182,38 @@
                         <h3 style="padding-left: 5px;">Graph</h3>
                     </div>
                     <div class="row">
-                        <ul class="large-block-grid-2 text-center">
-                            <li><img src="img/plus.jpg"></li>
+                        <ul id="graphArea" class="large-block-grid-2 text-center">
+                            <li id="newGraph0">
+                                <a href="#" data-reveal-id="addModal">
+                                    <img src="img/plus.jpg">
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+            <div id="addModal" class="reveal-modal" data-reveal>
+                <h2>Choose a type</h2>
+
+                <div id="jstree">
+                    <ul>
+                        <li>
+                            Root node 1
+                            <ul>
+                                <li>Child node 1</li>
+                                <li>Child node 2</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <p align="right">
+                    <a href="#" onclick="newGraph()" class="secondary button">Create</a>
+                    <a href="#" onclick="$('.close-reveal-modal').click();" class="secondary button">Cancel</a>
+                </p>
+                <a class="close-reveal-modal">&#215;</a>
+            </div>
+
         </div>
     </div>
 </div>
@@ -193,6 +221,7 @@
 
 
 <script src="js/vendor/jquery.js"></script>
+<script type="text/javascript" src="dist/jstree.min.js"></script>
 <script src="js/foundation.min.js"></script>
 <script type="text/javascript" src="js/jquery.nouislider.all.min.js"></script>
 <script>
@@ -219,6 +248,25 @@
     $('#income-slider').Link('upper').to($('#income-slider-max-number'));
     $('#employ-slider').Link('lower').to($('#employ-slider-min-number'));
     $('#employ-slider').Link('upper').to($('#employ-slider-max-number'));
+
+    $(function () {
+        $('#jstree').jstree({
+            "plugins": ["checkbox", "sort", "state"],
+            "checkbox": {
+                "keep_selected_style": false
+            }
+
+        });
+
+        $('#jstree').on("changed.jstree", function (e, data) {
+            console.log(data.selected);
+        });
+        $('button').on('click', function () {
+            $('#jstree').jstree(true).select_node('child_node_1');
+            $('#jstree').jstree('select_node', 'child_node_1');
+            $.jstree.reference('#jstree').select_node('child_node_1');
+        });
+    });
 
     $(document).foundation();
 </script>
