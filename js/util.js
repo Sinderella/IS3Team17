@@ -28,9 +28,32 @@ function filter() {
     });
 }
 
-function newGraph(){
-    $('#newGraph' + graphNo).html('<img src="https://www.google.co.uk/logos/2012/birthday12-thp.png">');
-    graphNo++;
-    $("#graphArea").append('<li id="newGraph' + graphNo + '"><a href="#" data-reveal-id="addModal"><img src="img/plus.jpg"></a></li>');
-    $('.close-reveal-modal').click();
+function newGraph() {
+    var selected = $('#jstree').jstree("get_checked", null, true);
+    var tmpIndex = selected.indexOf("j1_4");
+    if (tmpIndex > -1) {
+        selected.splice(tmpIndex, 1);
+    }
+    tmpIndex = selected.indexOf("j1_1");
+    if (tmpIndex > -1) {
+        selected.splice(tmpIndex, 1);
+    }
+    if (selected.length < 1 || selected.length > 3) {
+        $("#popup-title").html('Choose datafields (max 3) <span class="alert label">maximum is 3</span>');
+    } else {
+        //$('#newGraph' + graphNo).html('<img src="https://www.google.co.uk/logos/2012/birthday12-thp.png">');
+        $('#newGraph' + graphNo).empty();
+        if (selected.length == 1){
+            barchart("#newGraph" + graphNo);
+        }else if (selected.length == 2){
+            scatterplot("#newGraph" + graphNo, false);
+        }else{
+            scatterplot("#newGraph" + graphNo, true);
+        }
+
+        graphNo++;
+        $("#graphArea").append('<li id="newGraph' + graphNo + '"><a href="#" data-reveal-id="addModal"><img src="img/plus.jpg"></a></li>');
+        $('.close-reveal-modal').click();
+        $('#jstree').jstree("uncheck_all");
+    }
 }

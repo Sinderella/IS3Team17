@@ -13,9 +13,6 @@
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
     <script type="text/javascript" src="js/vendor/modernizr.js"></script>
-    <script type="text/javascript" src="js/piechart.js"></script>
-    <script type="text/javascript" src="js/util.js"></script>
-
 
 </head>
 <body>
@@ -194,17 +191,28 @@
             </div>
 
             <div id="addModal" class="reveal-modal" data-reveal>
-                <h2>Choose a type</h2>
+                <h2 id="popup-title">Choose datafields (max 3)</h2>
 
                 <div id="jstree">
                     <ul>
                         <li>
-                            Root node 1
+                            Income
                             <ul>
-                                <li>Child node 1</li>
-                                <li>Child node 2</li>
+                                <li id="income-domain-rate">Income Domain Rate</li>
+                                <li id="no-income-deprived">No. of Income Deprived People</li>
                             </ul>
                         </li>
+                        <li>
+                            Employment
+                            <ul>
+                                <li id="employ-rate">Employment Rate</li>
+                                <li id="no-employ-deprived">No. of Employment Deprived People</li>
+                                <li id="best-fit">Best Fit of Working Age</li>
+                            </ul>
+                        </li>
+                        <li id="pop">Population</li>
+                        <li id="area-den">Area Density</li>
+                        <li id="council-exp">Council Expenditure</li>
                     </ul>
                 </div>
                 <p align="right">
@@ -225,8 +233,10 @@
 <script src="js/foundation.min.js"></script>
 <script type="text/javascript" src="js/jquery.nouislider.all.min.js"></script>
 <script>
+    var income_slider = $("#income-slider");
+    var employ_slider = $("#employ-slider");
 
-    $("#income-slider").noUiSlider({
+    income_slider.noUiSlider({
         start: [0, 50],
         connect: true,
         range: {
@@ -235,7 +245,7 @@
         }
     });
 
-    $("#employ-slider").noUiSlider({
+    employ_slider.noUiSlider({
         start: [0, 50],
         connect: true,
         range: {
@@ -244,32 +254,35 @@
         }
     });
 
-    $('#income-slider').Link('lower').to($('#income-slider-min-number'));
-    $('#income-slider').Link('upper').to($('#income-slider-max-number'));
-    $('#employ-slider').Link('lower').to($('#employ-slider-min-number'));
-    $('#employ-slider').Link('upper').to($('#employ-slider-max-number'));
+    income_slider.Link('lower').to($('#income-slider-min-number'));
+    income_slider.Link('upper').to($('#income-slider-max-number'));
+    employ_slider.Link('lower').to($('#employ-slider-min-number'));
+    employ_slider.Link('upper').to($('#employ-slider-max-number'));
 
     $(function () {
         $('#jstree').jstree({
             "plugins": ["checkbox", "sort", "state"],
             "checkbox": {
-                "keep_selected_style": false
+//                "keep_selected_style": false
             }
 
+        }).on('loaded.jstree', function () {
+            $treeview.jstree('open_all');
         });
 
         $('#jstree').on("changed.jstree", function (e, data) {
             console.log(data.selected);
         });
-        $('button').on('click', function () {
-            $('#jstree').jstree(true).select_node('child_node_1');
-            $('#jstree').jstree('select_node', 'child_node_1');
-            $.jstree.reference('#jstree').select_node('child_node_1');
-        });
     });
 
     $(document).foundation();
 </script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script type="text/javascript" src="js/scatterplot.js"></script>
+<script type="text/javascript" src="js/piechart.js"></script>
+<script type="text/javascript" src="js/barchart.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
 
 <script type="text/javascript">
     piechart(50, 50);
