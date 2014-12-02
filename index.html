@@ -141,7 +141,7 @@
                 </div>
                 <div class="large-12 columns light-grey-bg-pattern"
                      style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 0px;">
-                    <div id="information" class="large-3 columns" style="padding-top: 25px;">
+                    <div id="information" class="large-3 columns">
                         <label id="info_pop">Population: </label>
                         <label id="info_den">Density: </label>
 
@@ -156,18 +156,18 @@
                             </div>
                         </div>
                     </div>
-                    <div id="information2" class="large-3 columns" style="padding-top: 25px;">
+                    <div id="information2" class="large-3 columns">
                         <label id="info_elec">Electorate: </label>
                         <label id="info_vote">Vote: </label>
                         <label id="info_rejected">Rejected: </label>
                         <label id="info_area">Area: </label>
                     </div>
-                    <div id="information3" class="large-3 columns" style="padding-top: 25px;">
+                    <div id="information3" class="large-3 columns">
                         <label id="info_income">Income: </label>
                         <label id="info_employ">Employment: </label>
                         <label id="info_expenditure">Expenditure per capita(£): </label>
                     </div>
-                    <div id="piechart" class="large-3 columns" align="center">
+                    <div id="boxchart" class="large-3 columns" align="center">
                     </div>
                 </div>
             </div>
@@ -281,11 +281,13 @@
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script type="text/javascript" src="js/scatterplot.js"></script>
 <script type="text/javascript" src="js/piechart.js"></script>
+<script type="text/javascript" src="js/boxchart.js"></script>
 <script type="text/javascript" src="js/barchart.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
 
 <script type="text/javascript">
-    piechart(50, 50);
+    boxchart(50, 50);
+    //    piechart(50, 50);
 </script>
 </body>
 </html>
