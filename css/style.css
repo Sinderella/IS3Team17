@@ -1,174 +1,171 @@
-.axis path, .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-.x.axis path {
-    display: none;
-}
+
 .bar:hover {
-    fill: lightgreen!important;
+	fill: lightgreen!important;
 }
-.d3-tip {
-    line-height: 1;
-    padding: 12px;
-    background: whitesmoke;
-    color: gray;
-    border-radius: 2px;
+
+.constituency-boundary {
+	fill: none;
+	stroke: #ffffff;
+	stroke-linejoin: round;
+}
+
+.constituency:hover {
+	fill: lightgreen!important;
 }
 
 .axis path,
 .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
 }
 
 .dot {
-    stroke: whitesmoke;
+	stroke: whitesmoke;
 }
 
 .dot:hover {
-    fill: lightgreen!important;
+	fill: lightgreen!important;
 }
 
 .d3-tip {
-    line-height: 1;
-    padding: 12px;
-    background: whitesmoke;
-    color: gray;
-    border-radius: 2px;
+	line-height: 1;
+	padding: 12px;
+	background: whitesmoke;
+	color: gray;
+	border-radius: 2px;
+	font-size: 10px;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
-    box-sizing: border-box;
-    display: inline;
-    font-size: 10px;
-    width: 100%;
-    line-height: 1;
-    color: whitesmoke;
-    content: "\25BC";
-    position: absolute;
-    text-align: center;
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: whitesmoke;
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
 }
 
 /* Style northward tooltips differently */
 .d3-tip.n:after {
-    margin: -1px 0 0 0;
-    top: 100%;
-    left: 0;
+	margin: -1px 0 0 0;
+	top: 100%;
+	left: 0;
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
-    box-sizing: border-box;
-    display: inline;
-    font-size: 10px;
-    width: 100%;
-    line-height: 1;
-    color: whitesmoke;
-    content: "\25BC";
-    position: absolute;
-    text-align: center;
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: whitesmoke;
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
 }
 
 /* Style northward tooltips differently */
 .d3-tip.n:after {
-    margin: -1px 0 0 0;
-    top: 100%;
-    left: 0;
+	margin: -1px 0 0 0;
+	top: 100%;
+	left: 0;
 }
 
 .row {
-    min-width: 95% !important;
+	min-width: 95% !important;
 }
 
 .light-grey-bg-pattern {
-    background: none repeat scroll 0 0 #f2f2f2;
-    border: 1px solid #d8d8d8;
-    color: #333333;
-    margin-bottom: 1.25rem;
-    padding: 1.25rem;
+	background: none repeat scroll 0 0 #f2f2f2;
+	border: 1px solid #d8d8d8;
+	color: #333333;
+	margin-bottom: 1.25rem;
+	padding: 1.25rem;
 }
 
 .tabs {
-    border: 1px solid #ccc;
+	border: 1px solid #ccc;
 }
 
 .tabs-content {
-    border: 1px solid #ccc;
+	border: 1px solid #ccc;
 }
 
 .tabs-content > .content {
-    padding: 0px;
+	padding: 0px;
 }
 
 #radioYes {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #radioNo {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #leftsidebar {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #rightsidebar {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #cities {
-    height: 339px;
-    margin-bottom: 0px;
+	height: 389px;
+	margin-bottom: 0px;
 }
 
 #information {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch0 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch10 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch20 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch30 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch40 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch50 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch60 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch70 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch80 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 #ch90 {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 text {
-    font-size: 0.5rem;
+	font-size: 0.5rem;
 }
