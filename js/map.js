@@ -50,7 +50,7 @@ function map(voteType) {
                     else if (voteType == NO_TYPE)
                         return getColorByVote(voteType, d.properties.no * 1.0 / d.properties.numberOfVotes * 100);
                     else
-                        return "#EB974E";
+                        return "#95a5a6";
                 } else {
                     return "#ECECEC";
                 }
@@ -71,6 +71,8 @@ function map(voteType) {
 
 function changeMapColor() {
     var color, properties, percent;
+    var pop, den, yes, no, male, female, elec, vote, reject, area, income, employ, epc;
+    pop = den = yes = no = male = female = elec = vote = reject = area = income = employ = epc = 0;
     var voteType;
     var loop = 0;
     var checked = [];
@@ -89,29 +91,173 @@ function changeMapColor() {
         $('.constituency').each(function (path) {
             properties = lad.objects.lad.geometries[loop].properties;
             percent = properties.yes * 1.0 / properties.numberOfVotes * 100;
-            color = '#EB974E';
+            color = '#95a5a6';
             if (percent >= 0 && percent < 10 && checked[0] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 10 && percent < 20 && checked[1] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 20 && percent < 30 && checked[2] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 30 && percent < 40 && checked[3] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 40 && percent < 50 && checked[4] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 50 && percent < 60 && checked[5] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 60 && percent < 70 && checked[6] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 70 && percent < 80 && checked[7] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 80 && percent < 90 && checked[8] == true) {
                 color = getColorByVote(voteType, percent);
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
             } else if (percent >= 90 && percent <= 100 && checked[9] == true) {
                 color = getColorByVote(voteType, percent);
-            }
+                pop += properties.totalPopulation;
+                den += properties.populationDensity;
+                yes += properties.yes;
+                no += properties.no;
+                male += properties.estimatedMales;
+                female += properties.estimatedFemales;
+                elec += properties.electorate;
+                vote += properties.numberOfVotes;
+                reject += properties.rejectedPaper;
+                area += properties.area;
+                income += properties.incomeDeprivedPeople;
+                employ += properties.employmentDeprivedPeople;
+                epc += properties.councilExpenditurePerCapita;
+                properties.isSelected = true;
+            } else
+                properties.isSelected = false;
             loop = loop + 1;
+            changeInfo(pop, den, yes, no, male, female, elec, vote, reject, area, income, employ, epc);
+            var yesPer = (yes / vote * 100).toFixed(2), noPer = (no / vote * 100).toFixed(2);
+            boxchart(yesPer, noPer);
             $(this).css('fill', color);
         });
     });

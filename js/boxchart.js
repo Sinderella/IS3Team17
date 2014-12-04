@@ -16,7 +16,10 @@ function boxchart(yes, no) {
         .attr("x", 0)
         .attr("y", 0)
         .attr("height", 30)
-        .attr("width", data1[0] * 1.0 / 100 * width)
+        .attr("width", function (d) {
+            if (data1[0] == "NaN") return 50.0 / 100 * width;
+            return data1[0] * 1.0 / 100 * width;
+        })
         .attr("fill", "#1a75ff");
 
     var rects1 = chart.selectAll(".rect")
@@ -24,10 +27,16 @@ function boxchart(yes, no) {
         .enter()
         .append("rect")
         .attr('class', 'rect')
-        .attr("x", data1[0] * 1.0 / 100 * width)
+        .attr("x", function (d) {
+            if (data2[0] == "NaN") return 50.0 / 100 * width;
+            return data1[0] * 1.0 / 100 * width;
+        })
         .attr("y", 0)
         .attr("height", 30)
-        .attr("width", data2[0] * 1.0 / 100 * width)
+        .attr("width", function (d) {
+            if (data2[0] == "NaN") return 50.0 / 100 * width;
+            return data2[0] * 1.0 / 100 * width;
+        })
         .attr("fill", "#f71919");
 
     var text1 = chart.selectAll(".txt1")
