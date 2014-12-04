@@ -16,7 +16,7 @@ function changeInfo(pop, den, yes, no, male, female, elec, vote, reject, area, i
     $("#info_expenditure").text("Expenditure per capita(£): " + epc);
 }
 
-function filter() {
+function filterList() {
     var value = $("#search_cities").val().toLowerCase();
     $("#cities").find("> option").each(function () {
         if ($(this).text().toLowerCase().search(value) != -1) {

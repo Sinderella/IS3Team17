@@ -72,24 +72,34 @@
 							</div>
 							<label>Vote Percentage</label>
 							<ul class="no-bullet">
-								<li><input id="ch0" type="checkbox"><label for="ch0">0 - 10</label></li>
-								<li><input id="ch10" type="checkbox"><label for="ch10">10 - 20</label></li>
-								<li><input id="ch20" type="checkbox"><label for="ch20">20 - 30</label></li>
-								<li><input id="ch30" type="checkbox"><label for="ch30">30 - 40</label></li>
-								<li><input id="ch40" type="checkbox"><label for="ch40">40 - 50</label></li>
-								<li><input id="ch50" type="checkbox"><label for="ch50">50 - 60</label></li>
-								<li><input id="ch60" type="checkbox"><label for="ch60">60 - 70</label></li>
-								<li><input id="ch70" type="checkbox"><label for="ch70">70 - 80</label></li>
+                                <li><input id="ch0" type="checkbox" onclick="changeMapColor()"><label for="ch0">0 -
+                                    10</label></li>
+                                <li><input id="ch1" type="checkbox" onclick="changeMapColor()"><label for="ch1">10 -
+                                    20</label></li>
+                                <li><input id="ch2" type="checkbox" onclick="changeMapColor()"><label for="ch2">20 -
+                                    30</label></li>
+                                <li><input id="ch3" type="checkbox" onclick="changeMapColor()"><label for="ch3">30 -
+                                    40</label></li>
+                                <li><input id="ch4" type="checkbox" onclick="changeMapColor()"><label for="ch4">40 -
+                                    50</label></li>
+                                <li><input id="ch5" type="checkbox" onclick="changeMapColor()"><label for="ch5">50 -
+                                    60</label></li>
+                                <li><input id="ch6" type="checkbox" onclick="changeMapColor()"><label for="ch6">60 -
+                                    70</label></li>
+                                <li><input id="ch7" type="checkbox" onclick="changeMapColor()"><label for="ch7">70 -
+                                    80</label></li>
 								<li>
-									<input id="ch80" type="checkbox">
-									<label for="ch80" style="margin-right: 24px;">80 - 90</label>
-									<input id="radioYes" type="radio" name="radio" onchange="map(YES_TYPE);" value="Yes" id="radioYes">
+                                    <input id="ch8" type="checkbox" onclick="changeMapColor()">
+                                    <label for="ch8" style="margin-right: 24px;">80 - 90</label>
+                                    <input id="radioYes" type="radio" name="radio" onchange="changeMapColor()"
+                                           value="Yes" checked>
 									<label for="radioYes" style="margin-right: 0px;">Yes</label>
 								</li>
 								<li>
-									<input id="ch90" type="checkbox">
-									<label for="ch90">90 - 100</label>
-									<input id="radioNo" type="radio" name="radio" onchange="map(NO_TYPE);" value="No" id="radioNo">
+                                    <input id="ch9" type="checkbox" onclick="changeMapColor()">
+                                    <label for="ch9">90 - 100</label>
+                                    <input id="radioNo" type="radio" name="radio" onchange="changeMapColor()"
+                                           value="No">
 									<label for="radioNo">No</label>
 								</li>
 							</ul>
@@ -108,7 +118,8 @@
 
 					<div id="rightsidebar" class="large-3 columns light-grey-bg-pattern">
 						<label>Select Cities
-							<input id="search_cities" type="text" placeholder="Search Cities" onkeyup="filter(this)"/>
+                            <input id="search_cities" type="text" placeholder="Search Cities"
+                                   onkeyup="filterList(this)"/>
 						</label>
 						<select id="cities" name="cities" multiple>
 							<option value="Aberdeen City">Aberdeen City</option>
