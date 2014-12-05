@@ -44,11 +44,11 @@ function newGraph() {
         //$('#newGraph' + graphNo).html('<img src="https://www.google.co.uk/logos/2012/birthday12-thp.png">');
         $('#newGraph' + graphNo).empty();
         $('#newGraph' + graphNo).append("<button onclick=\"deleteGraph(" + graphNo + ")\" class='buttonhide' style=\"padding: 0px; width: 60px; height: 30px; margin-bottom: 0px;\"><p> Remove </p></button>");
-        if (selected.length == 1){
+        if (selected.length == 1) {
             barchart("#newGraph" + graphNo, selected);
-        }else if (selected.length == 2){
+        } else if (selected.length == 2) {
             scatterplot("#newGraph" + graphNo, selected, false);
-        }else{
+        } else {
             scatterplot("#newGraph" + graphNo, selected, true);
         }
 

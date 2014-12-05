@@ -1,117 +1,117 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>IS3 Prototype</title>
-	<link rel="stylesheet" type="text/css" href="css/foundation.css"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/jquery.nouislider.min.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>IS3 Prototype</title>
+    <link rel="stylesheet" type="text/css" href="css/foundation.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery.nouislider.min.css">
 
-	<link rel="stylesheet" href="dist/themes/default/style.min.css"/>
+    <link rel="stylesheet" href="dist/themes/default/style.min.css"/>
 
-	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
-	<script type="text/javascript" src="js/vendor/modernizr.js"></script>
-	<script src="js/vendor/jquery.js"></script>
-	<script>
-		var json;
-		var selectedID = [];
-	</script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+    <script type="text/javascript" src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script>
+        var json;
+        var selectedID = [];
+    </script>
 
 </head>
 <body>
-	<div class="row full-width wrapper">
-		<div class="large-12 columns content-bg">
-			<div class="top-menu">
-				<div class="large-12 medium-12 small-12 columns top-menu" style="padding-left: 0px; padding-right: 0px;">
-					<div id="topbar" class="row">
-						<dl class="tabs" data-tab>
-							<dd class="active"><a href="#dashboard"
-								style="padding-bottom: 8px; padding-top: 8px;">Dashboard</a></dd>
-								<dd><a href="#analyse" style="padding-bottom: 8px; padding-top: 8px;">Analyse</a></dd>
-							</dl>
-						</div>
+<div class="row full-width wrapper">
+    <div class="large-12 columns content-bg">
+        <div class="top-menu">
+            <div class="large-12 medium-12 small-12 columns top-menu" style="padding-left: 0px; padding-right: 0px;">
+                <div id="topbar" class="row">
+                    <dl class="tabs" data-tab>
+                        <dd class="active"><a href="#dashboard"
+                                              style="padding-bottom: 8px; padding-top: 8px;">Dashboard</a></dd>
+                        <dd><a href="#analyse" style="padding-bottom: 8px; padding-top: 8px;">Analyse</a></dd>
+                    </dl>
+                </div>
 
-					</div>
+            </div>
 
-				</div>
-			</div>
-		</div>
+        </div>
+    </div>
+</div>
 
-		<div class="row">
-			<div class="large-12 columns" style="padding-left: 0px; padding-right: 0px;">
-				<div class="tabs-content" style="margin-bottom: 0px;">
-					<div class="content active" id="dashboard">
+<div class="row">
+    <div class="large-12 columns" style="padding-left: 0px; padding-right: 0px;">
+        <div class="tabs-content" style="margin-bottom: 0px;">
+            <div class="content active" id="dashboard">
 
-						<div id="leftsidebar" class="large-2 columns panel"
-							 style="padding-top: 5px; padding-bottom: 26px">
-							<div class="row">
-								<label id="slider-income-label" style="margin-bottom: 10px;">Income Domain Rate</label>
+                <div id="leftsidebar" class="large-2 columns panel"
+                     style="padding-top: 5px; padding-bottom: 26px">
+                    <div class="row">
+                        <label id="slider-income-label" style="margin-bottom: 10px;">Income Domain Rate</label>
 
-								<div id="income-slider"
-								style="margin-left: 15px; margin-right: 15px; margin-bottom: 10px;"></div>
-								<div class="large-6 columns">
-									<input id="income-slider-min-number" type="number" step="1" max="0" min="100"
-									style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
-								</div>
-								<div class="large-6 columns">
-									<input id="income-slider-max-number" type="number" step="1" max="0" min="100"
-									style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
-								</div>
-							</div>
+                        <div id="income-slider"
+                             style="margin-left: 15px; margin-right: 15px; margin-bottom: 10px;"></div>
+                        <div class="large-6 columns">
+                            <input id="income-slider-min-number" type="number" step="1" max="0" min="100"
+                                   style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
+                        </div>
+                        <div class="large-6 columns">
+                            <input id="income-slider-max-number" type="number" step="1" max="0" min="100"
+                                   style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
+                        </div>
+                    </div>
 
-							<div class="row">
-								<label id="slider-employ-label" style="margin-bottom: 10px;">Employment Domain Rate</label>
+                    <div class="row">
+                        <label id="slider-employ-label" style="margin-bottom: 10px;">Employment Domain Rate</label>
 
-								<div id="employ-slider"
-								style="margin-left: 15px; margin-right: 15px; margin-bottom: 10px;"></div>
-								<div class="large-6 columns">
-									<input id="employ-slider-min-number" type="number" step="1" max="0" min="100"
-									style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
-								</div>
-								<div class="large-6 columns" style="padding-bottom: 30px;">
-									<input id="employ-slider-max-number" type="number" step="1" max="0" min="100"
-									style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
-								</div>
-							</div>
-							<label>Vote Percentage</label>
-							<ul class="no-bullet">
-                                <li><input id="ch0" type="checkbox" onclick="changeMapColor()"><label for="ch0">0 -
-                                    10</label></li>
-                                <li><input id="ch1" type="checkbox" onclick="changeMapColor()"><label for="ch1">10 -
-                                    20</label></li>
-                                <li><input id="ch2" type="checkbox" onclick="changeMapColor()"><label for="ch2">20 -
-                                    30</label></li>
-                                <li><input id="ch3" type="checkbox" onclick="changeMapColor()"><label for="ch3">30 -
-                                    40</label></li>
-                                <li><input id="ch4" type="checkbox" onclick="changeMapColor()"><label for="ch4">40 -
-                                    50</label></li>
-                                <li><input id="ch5" type="checkbox" onclick="changeMapColor()"><label for="ch5">50 -
-                                    60</label></li>
-                                <li><input id="ch6" type="checkbox" onclick="changeMapColor()"><label for="ch6">60 -
-                                    70</label></li>
-                                <li><input id="ch7" type="checkbox" onclick="changeMapColor()"><label for="ch7">70 -
-                                    80</label></li>
-								<li>
-                                    <input id="ch8" type="checkbox" onclick="changeMapColor()">
-                                    <label for="ch8" style="margin-right: 24px;">80 - 90</label>
-                                    <input id="radioYes" type="radio" name="radio" onchange="changeMapColor()"
-                                           value="Yes" checked>
-									<label for="radioYes" style="margin-right: 0px;">Yes</label>
-								</li>
-								<li>
-                                    <input id="ch9" type="checkbox" onclick="changeMapColor()">
-                                    <label for="ch9">90 - 100</label>
-                                    <input id="radioNo" type="radio" name="radio" onchange="changeMapColor()"
-                                           value="No">
-									<label for="radioNo">No</label>
-								</li>
-							</ul>
-						</div>
+                        <div id="employ-slider"
+                             style="margin-left: 15px; margin-right: 15px; margin-bottom: 10px;"></div>
+                        <div class="large-6 columns">
+                            <input id="employ-slider-min-number" type="number" step="1" max="0" min="100"
+                                   style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
+                        </div>
+                        <div class="large-6 columns" style="padding-bottom: 30px;">
+                            <input id="employ-slider-max-number" type="number" step="1" max="0" min="100"
+                                   style="margin-bottom: 0px; padding: 0px 4px; height: 25px;">
+                        </div>
+                    </div>
+                    <label>Vote Percentage</label>
+                    <ul class="no-bullet">
+                        <li><input id="ch0" type="checkbox" onclick="changeMapColor()"><label for="ch0">0 -
+                            10</label></li>
+                        <li><input id="ch1" type="checkbox" onclick="changeMapColor()"><label for="ch1">10 -
+                            20</label></li>
+                        <li><input id="ch2" type="checkbox" onclick="changeMapColor()"><label for="ch2">20 -
+                            30</label></li>
+                        <li><input id="ch3" type="checkbox" onclick="changeMapColor()"><label for="ch3">30 -
+                            40</label></li>
+                        <li><input id="ch4" type="checkbox" onclick="changeMapColor()"><label for="ch4">40 -
+                            50</label></li>
+                        <li><input id="ch5" type="checkbox" onclick="changeMapColor()"><label for="ch5">50 -
+                            60</label></li>
+                        <li><input id="ch6" type="checkbox" onclick="changeMapColor()"><label for="ch6">60 -
+                            70</label></li>
+                        <li><input id="ch7" type="checkbox" onclick="changeMapColor()"><label for="ch7">70 -
+                            80</label></li>
+                        <li>
+                            <input id="ch8" type="checkbox" onclick="changeMapColor()">
+                            <label for="ch8" style="margin-right: 24px;">80 - 90</label>
+                            <input id="radioYes" type="radio" name="radio" onchange="changeMapColor()"
+                                   value="Yes" checked>
+                            <label for="radioYes" style="margin-right: 0px;">Yes</label>
+                        </li>
+                        <li>
+                            <input id="ch9" type="checkbox" onclick="changeMapColor()">
+                            <label for="ch9">90 - 100</label>
+                            <input id="radioNo" type="radio" name="radio" onchange="changeMapColor()"
+                                   value="No">
+                            <label for="radioNo">No</label>
+                        </li>
+                    </ul>
+                </div>
 
 
-						<div class="large-7 columns light-grey-bg-pattern" style="
+                <div class="large-7 columns light-grey-bg-pattern" style="
 							margin-bottom: 0px;
 							padding-left: 0px;
 							padding-bottom: 0px;
@@ -119,135 +119,135 @@
 							padding-top: 10px;
 							align: center;
 							">
-							<div id="map" align="center"></div>
-					</div>
+                    <div id="map" align="center"></div>
+                </div>
 
-					<div id="rightsidebar" class="large-3 columns light-grey-bg-pattern">
-						<label>Select Cities
-                            <input id="search_cities" type="text" placeholder="Search Cities"
-                                   onkeyup="filterList(this)"/>
-						</label>
-						<select id="cities" name="cities" onchange="changeMapColor()" multiple>
-							<option value="Aberdeen City">Aberdeen City</option>
-							<option value="Aberdeenshire">Aberdeenshire</option>
-							<option value="Angus">Angus</option>
-							<option value="Argyll and Bute">Argyll and Bute</option>
-							<option value="Clackmannanshire">Clackmannanshire</option>
-							<option value="Comhairle Nan Eilean Siar">Comhairle Nan Eilean Siar</option>
-							<option value="Dumfries and Galloway">Dumfries and Galloway</option>
-							<option value="Dundee City">Dundee City</option>
-							<option value="East Ayrshire">East Ayrshire</option>
-							<option value="East Dunbartonshire">East Dunbartonshire</option>
-							<option value="East Lothian">East Lothian</option>
-							<option value="East Renfrewshire">East Renfrewshire</option>
-							<option value="City of Edinburgh">City of Edinburgh</option>
-							<option value="Falkirk">Falkirk</option>
-							<option value="Fife">Fife</option>
-							<option value="Glasgow City">Glasgow City</option>
-							<option value="Highland">Highland</option>
-							<option value="Inverclyde">Inverclyde</option>
-							<option value="Midlothian">Midlothian</option>
-							<option value="Moray">Moray</option>
-							<option value="North Ayrshire">North Ayrshire</option>
-							<option value="North Lanarkshire">North Lanarkshire</option>
-							<option value="Orkney Islands">Orkney Islands</option>
-							<option value="Perth and Kinross">Perth and Kinross</option>
-							<option value="Renfrewshire">Renfrewshire</option>
-							<option value="Scottish Borders">Scottish Borders</option>
-							<option value="Shetland Islands">Shetland Islands</option>
-							<option value="South Ayrshire">South Ayrshire</option>
-							<option value="South Lanarkshire">South Lanarkshire</option>
-							<option value="Stirling">Stirling</option>
-							<option value="West Dunbartonshire">West Dunbartonshire</option>
-							<option value="West Lothian">West Lothian</option>
+                <div id="rightsidebar" class="large-3 columns light-grey-bg-pattern">
+                    <label>Select Cities
+                        <input id="search_cities" type="text" placeholder="Search Cities"
+                               onkeyup="filterList(this)"/>
+                    </label>
+                    <select id="cities" name="cities" onchange="changeMapColor()" multiple>
+                        <option value="Aberdeen City">Aberdeen City</option>
+                        <option value="Aberdeenshire">Aberdeenshire</option>
+                        <option value="Angus">Angus</option>
+                        <option value="Argyll and Bute">Argyll and Bute</option>
+                        <option value="Clackmannanshire">Clackmannanshire</option>
+                        <option value="Comhairle Nan Eilean Siar">Comhairle Nan Eilean Siar</option>
+                        <option value="Dumfries and Galloway">Dumfries and Galloway</option>
+                        <option value="Dundee City">Dundee City</option>
+                        <option value="East Ayrshire">East Ayrshire</option>
+                        <option value="East Dunbartonshire">East Dunbartonshire</option>
+                        <option value="East Lothian">East Lothian</option>
+                        <option value="East Renfrewshire">East Renfrewshire</option>
+                        <option value="City of Edinburgh">City of Edinburgh</option>
+                        <option value="Falkirk">Falkirk</option>
+                        <option value="Fife">Fife</option>
+                        <option value="Glasgow City">Glasgow City</option>
+                        <option value="Highland">Highland</option>
+                        <option value="Inverclyde">Inverclyde</option>
+                        <option value="Midlothian">Midlothian</option>
+                        <option value="Moray">Moray</option>
+                        <option value="North Ayrshire">North Ayrshire</option>
+                        <option value="North Lanarkshire">North Lanarkshire</option>
+                        <option value="Orkney Islands">Orkney Islands</option>
+                        <option value="Perth and Kinross">Perth and Kinross</option>
+                        <option value="Renfrewshire">Renfrewshire</option>
+                        <option value="Scottish Borders">Scottish Borders</option>
+                        <option value="Shetland Islands">Shetland Islands</option>
+                        <option value="South Ayrshire">South Ayrshire</option>
+                        <option value="South Lanarkshire">South Lanarkshire</option>
+                        <option value="Stirling">Stirling</option>
+                        <option value="West Dunbartonshire">West Dunbartonshire</option>
+                        <option value="West Lothian">West Lothian</option>
 
-						</select>
-					</div>
-					<div class="large-12 columns light-grey-bg-pattern"
-					style="margin-bottom: 0px; padding-top: 15px; padding-bottom: 10px;">
-					<div id="information" class="large-3 columns">
-						<label id="info_pop">Population: </label>
-						<label id="info_den">Density: </label>
+                    </select>
+                </div>
+                <div class="large-12 columns light-grey-bg-pattern"
+                     style="margin-bottom: 0px; padding-top: 15px; padding-bottom: 10px;">
+                    <div id="information" class="large-3 columns">
+                        <label id="info_pop">Population: </label>
+                        <label id="info_den">Density: </label>
 
-						<div class="row">
-							<div class="large-6 columns">
-								<label id="info_yes">Yes: </label>
-								<label id="info_male">Male: </label>
-							</div>
-							<div class="large-6 columns">
-								<label id="info_no">No: </label>
-								<label id="info_female">Female: </label>
-							</div>
-						</div>
-					</div>
-					<div id="information2" class="large-3 columns">
-						<label id="info_elec">Electorate: </label>
-						<label id="info_vote">Vote: </label>
-						<label id="info_rejected">Rejected: </label>
-						<label id="info_area">Area: </label>
-					</div>
-					<div id="information3" class="large-3 columns">
+                        <div class="row">
+                            <div class="large-6 columns">
+                                <label id="info_yes">Yes: </label>
+                                <label id="info_male">Male: </label>
+                            </div>
+                            <div class="large-6 columns">
+                                <label id="info_no">No: </label>
+                                <label id="info_female">Female: </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="information2" class="large-3 columns">
+                        <label id="info_elec">Electorate: </label>
+                        <label id="info_vote">Vote: </label>
+                        <label id="info_rejected">Rejected: </label>
+                        <label id="info_area">Area: </label>
+                    </div>
+                    <div id="information3" class="large-3 columns">
                         <label id="info_income">Income Deprived People: </label>
                         <label id="info_employ">Employment Deprived People: </label>
-						<label id="info_expenditure">Expenditure per capita(£): </label>
-					</div>
-					<div id="boxchart" class="large-3 columns" align="center" style="padding-top: 25px;">
-					</div>
-				</div>
-			</div>
+                        <label id="info_expenditure">Expenditure per capita(£): </label>
+                    </div>
+                    <div id="boxchart" class="large-3 columns" align="center" style="padding-top: 25px;">
+                    </div>
+                </div>
+            </div>
 
 
-			<div class="content" id="analyse">
-				<div class="large-12 columns">
-					<div class="row">
-						<h3 style="padding-left: 5px;">Graph</h3>
-					</div>
-					<div class="row">
-						<ul id="graphArea" class="large-block-grid-2 text-center">
-							<li id="newGraph0">
-								<a href="#" data-reveal-id="addModal">
-									<img src="img/plus.jpg">
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+            <div class="content" id="analyse">
+                <div class="large-12 columns">
+                    <div class="row">
+                        <h3 style="padding-left: 5px;">Graph</h3>
+                    </div>
+                    <div class="row">
+                        <ul id="graphArea" class="large-block-grid-2 text-center">
+                            <li id="newGraph0">
+                                <a href="#" data-reveal-id="addModal">
+                                    <img src="img/plus.jpg">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-			<div id="addModal" class="reveal-modal" data-reveal>
-				<h2 id="popup-title">Choose datafields (max 3)</h2>
+            <div id="addModal" class="reveal-modal" data-reveal>
+                <h2 id="popup-title">Choose datafields (max 3)</h2>
 
-				<div id="jstree">
-					<ul>
-						<li>
-							Income
-							<ul>
-								<li id="incomeDomainRate">Income Domain Rate</li>
-								<li id="incomeDeprivedPeople">No. of Income Deprived People</li>
-							</ul>
-						</li>
-						<li>
-							Employment
-							<ul>
-								<li id="employmentDomainRate">Employment Domain Rate</li>
-								<li id="employmentDeprivedPeople">No. of Employment Deprived People</li>
-								<li id="bestFitWorkingAgePopulation">Best Fit of Working Age</li>
-							</ul>
-						</li>
-						<li id="estimatedPopulation">Population</li>
-						<li id="area">Area Density</li>
-						<li id="councilExpenditurePerCapita">Council Expenditure</li>
-					</ul>
-				</div>
-				<p align="right">
-					<a href="#" onclick="newGraph()" class="secondary button">Create</a>
-					<a href="#" onclick="$('.close-reveal-modal').click();" class="secondary button">Cancel</a>
-				</p>
-				<a class="close-reveal-modal">&#215;</a>
-			</div>
+                <div id="jstree">
+                    <ul>
+                        <li>
+                            Income
+                            <ul>
+                                <li id="incomeDomainRate">Income Domain Rate</li>
+                                <li id="incomeDeprivedPeople">No. of Income Deprived People</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Employment
+                            <ul>
+                                <li id="employmentDomainRate">Employment Domain Rate</li>
+                                <li id="employmentDeprivedPeople">No. of Employment Deprived People</li>
+                                <li id="bestFitWorkingAgePopulation">Best Fit of Working Age</li>
+                            </ul>
+                        </li>
+                        <li id="estimatedPopulation">Population</li>
+                        <li id="area">Area Density</li>
+                        <li id="councilExpenditurePerCapita">Council Expenditure</li>
+                    </ul>
+                </div>
+                <p align="right">
+                    <a href="#" onclick="newGraph()" class="secondary button">Create</a>
+                    <a href="#" onclick="$('.close-reveal-modal').click();" class="secondary button">Cancel</a>
+                </p>
+                <a class="close-reveal-modal">&#215;</a>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 </div>
 
@@ -256,49 +256,49 @@
 <script src="js/foundation.min.js"></script>
 <script type="text/javascript" src="js/jquery.nouislider.all.min.js"></script>
 <script>
-	var income_slider = $("#income-slider");
-	var employ_slider = $("#employ-slider");
+    var income_slider = $("#income-slider");
+    var employ_slider = $("#employ-slider");
 
-	income_slider.noUiSlider({
-		start: [0, 50],
-		connect: true,
-		range: {
-			'min': 0,
-			'max': 25
-		}
-	});
+    income_slider.noUiSlider({
+        start: [0, 50],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 25
+        }
+    });
 
-	employ_slider.noUiSlider({
-		start: [0, 50],
-		connect: true,
-		range: {
-			'min': 0,
-			'max': 25
-		}
-	});
+    employ_slider.noUiSlider({
+        start: [0, 50],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 25
+        }
+    });
 
-	income_slider.Link('lower').to($('#income-slider-min-number'));
-	income_slider.Link('upper').to($('#income-slider-max-number'));
-	employ_slider.Link('lower').to($('#employ-slider-min-number'));
-	employ_slider.Link('upper').to($('#employ-slider-max-number'));
+    income_slider.Link('lower').to($('#income-slider-min-number'));
+    income_slider.Link('upper').to($('#income-slider-max-number'));
+    employ_slider.Link('lower').to($('#employ-slider-min-number'));
+    employ_slider.Link('upper').to($('#employ-slider-max-number'));
 
-	$(function () {
-		$('#jstree').jstree({
-			"plugins": ["checkbox", "sort", "state"],
-			"checkbox": {
+    $(function () {
+        $('#jstree').jstree({
+            "plugins": ["checkbox", "sort", "state"],
+            "checkbox": {
 //                "keep_selected_style": false
-}
+            }
 
-}).on('loaded.jstree', function () {
-	$treeview.jstree('open_all');
-});
+        }).on('loaded.jstree', function () {
+            $treeview.jstree('open_all');
+        });
 
-$('#jstree').on("changed.jstree", function (e, data) {
-	console.log(data.selected);
-});
-});
+        $('#jstree').on("changed.jstree", function (e, data) {
+            console.log(data.selected);
+        });
+    });
 
-	$(document).foundation();
+    $(document).foundation();
 </script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -311,23 +311,23 @@ $('#jstree').on("changed.jstree", function (e, data) {
 <script type="text/javascript" src="js/util.js"></script>
 
 <script type="text/javascript">
-	boxchart("NaN", "NaN");
-	map("blank");
-	$('#income-slider').on('slide', changeMapColor);
-	$('#employ-slider').on('slide', changeMapColor);
+    boxchart("NaN", "NaN");
+    map("blank");
+    $('#income-slider').on('slide', changeMapColor);
+    $('#employ-slider').on('slide', changeMapColor);
     //    piechart(50, 50);
-	$(window).load(function () {
-		$('#ch0').click();
-		$('#ch1').click();
-		$('#ch2').click();
-		$('#ch3').click();
-		$('#ch4').click();
-		$('#ch5').click();
-		$('#ch6').click();
-		$('#ch7').click();
-		$('#ch8').click();
-		$('#ch9').click();
-	});
+    $(window).load(function () {
+        $('#ch0').click();
+        $('#ch1').click();
+        $('#ch2').click();
+        $('#ch3').click();
+        $('#ch4').click();
+        $('#ch5').click();
+        $('#ch6').click();
+        $('#ch7').click();
+        $('#ch8').click();
+        $('#ch9').click();
+    });
 </script>
 </body>
 </html>

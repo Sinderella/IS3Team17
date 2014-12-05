@@ -48,7 +48,7 @@ function scatterplot(graph, selected, isBubble) {
 
     var datamax = null;
     if (isBubble) {
-        datamax = d3.max(dataset, function(d) {
+        datamax = d3.max(dataset, function (d) {
             return d.value3;
         });
     }
@@ -70,21 +70,21 @@ function scatterplot(graph, selected, isBubble) {
      */
 
     // setup x
-    var xValue = function(d) {
+    var xValue = function (d) {
             return d.value1;
         }, // data -> value
         xScale = d3.scale.linear().range([0, width]), // value -> display
-        xMap = function(d) {
+        xMap = function (d) {
             return xScale(xValue(d));
         }, // data -> display
         xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
     // setup y
-    var yValue = function(d) {
+    var yValue = function (d) {
             return d.value2;
         }, // data -> value
         yScale = d3.scale.linear().range([height, 0]), // value -> display
-        yMap = function(d) {
+        yMap = function (d) {
             return yScale(yValue(d));
         }, // data -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -92,7 +92,7 @@ function scatterplot(graph, selected, isBubble) {
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
-        .html(function(d) {
+        .html(function (d) {
             var str = d.city + "<br>yes " + d.yes + "% : no " + d.no + "%<br>";
 
             value1 = d.value1;
@@ -163,7 +163,7 @@ function scatterplot(graph, selected, isBubble) {
         .data(dataset)
         .enter().append("circle")
         .attr("class", "dot")
-        .attr("r", function(d) {
+        .attr("r", function (d) {
             if (isBubble) {
                 return d.value3 * 1.0 / datamax * 30;
             }
@@ -171,7 +171,7 @@ function scatterplot(graph, selected, isBubble) {
         })
         .attr("cx", xMap)
         .attr("cy", yMap)
-        .style("fill", function(d) {
+        .style("fill", function (d) {
             return d.color;
         })
         .on('mouseover', tip.show)

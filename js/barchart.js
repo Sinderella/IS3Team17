@@ -40,7 +40,7 @@ function barchart(graph, selected) {
     else if (selected[0] == "councilExpenditurePerCapita")
         label = "Council Expenditure Per Capita";
 
-    var datamax = d3.max(dataset, function(d) {
+    var datamax = d3.max(dataset, function (d) {
         return d.value1;
     });
 
@@ -72,7 +72,7 @@ function barchart(graph, selected) {
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
-        .html(function(d) {
+        .html(function (d) {
             var str = d.city + "<br>yes " + d.yes + "% : no " + d.no + "%<br>";
 
             value1 = d.value1;
@@ -92,21 +92,21 @@ function barchart(graph, selected) {
 
     svg.call(tip);
 
-    x.domain(dataset.map(function(d) {
+    x.domain(dataset.map(function (d) {
         return d.city;
     }));
-    var x0 = x.domain(dataset.sort(function(a, b) {
-                if ($('#radioYes').is(':checked'))
-                    return b.yes - a.yes;
-                else
-                    return b.no - a.no;
-            })
-            .map(function(d) {
-                return d.city;
-            }))
+    var x0 = x.domain(dataset.sort(function (a, b) {
+        if ($('#radioYes').is(':checked'))
+            return b.yes - a.yes;
+        else
+            return b.no - a.no;
+    })
+        .map(function (d) {
+            return d.city;
+        }))
         .copy();
 
-    y.domain([0, d3.max(dataset, function(d) {
+    y.domain([0, d3.max(dataset, function (d) {
         return d.value1;
     })]);
 
@@ -131,17 +131,17 @@ function barchart(graph, selected) {
         .data(dataset)
         .enter().append("svg:rect")
         .attr("class", "bar")
-        .attr("x", function(d) {
+        .attr("x", function (d) {
             return x(d.city);
         })
         .attr("width", x.rangeBand())
-        .attr("y", function(d) {
+        .attr("y", function (d) {
             return y(d.value1);
         })
-        .attr("height", function(d) {
+        .attr("height", function (d) {
             return height - y(d.value1);
         })
-        .style("fill", function(d) {
+        .style("fill", function (d) {
             return d.color;
         })
         .on('mouseover', tip.show)
