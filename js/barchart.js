@@ -22,6 +22,24 @@ function barchart(graph, selected) {
         }
     }
 
+    var label = "";
+    if (selected[0] == "incomeDomainRate")
+        label = "Income Domain Rate Percentage";
+    else if (selected[0] == "incomeDeprivedPeople")
+        label = "No. of Income Deprived People";
+    else if (selected[0] == "employmentDomainRate")
+        label = "Employment Domain Rate Percentage";
+    else if (selected[0] == "employmentDeprivedPeople")
+        label = "No. of Employment Deprived People";
+    else if (selected[0] == "bestFitWorkingAgePopulation")
+        label = "Best Fit Working Age Population";
+    else if (selected[0] == "estimatedPopulation")
+        label = "Estimated Population";
+    else if (selected[0] == "area")
+        label = "Area Density";
+    else if (selected[0] == "councilExpenditurePerCapita")
+        label = "Council Expenditure Per Capita";
+
     var datamax = d3.max(dataset, function(d) {
         return d.value1;
     });
@@ -55,7 +73,14 @@ function barchart(graph, selected) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-            return "temp msg";
+            var str = d.city + "<br>yes " + d.yes + "% : no " + d.no + "%<br>";
+
+            value1 = d.value1;
+            if (value1 % 1 !== 0)
+                value1 = value1.toFixed(2);
+            str += label + ": " + value1;
+
+            return str;
         })
 
     var svg = d3.select(graph)
@@ -71,7 +96,10 @@ function barchart(graph, selected) {
         return d.city;
     }));
     var x0 = x.domain(dataset.sort(function(a, b) {
-                return b.vote - a.vote;
+                if ($('#radioYes').is(':checked'))
+                    return b.yes - a.yes;
+                else
+                    return b.no - a.no;
             })
             .map(function(d) {
                 return d.city;
@@ -95,9 +123,9 @@ function barchart(graph, selected) {
         .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
-        .attr("dy", "-3.55em")
+        .attr("dy", "zem")
         .style("text-anchor", "end")
-        .text("Temp Y-Axis name");
+        .text(label);
 
     var bars = svg.selectAll(".bar")
         .data(dataset)
