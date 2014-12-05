@@ -66,5 +66,6 @@ function deleteGraph(delgraphNo) {
     var lis = $('#graphArea').find("li");
     for (i = 0; i < lis.length; i++) {
         $(lis[i]).attr('id', 'newGraph' + i);
+        $($(lis[i]).find('button')).attr('onclick', 'deleteGraph(' + i + ')');
     }
 }
