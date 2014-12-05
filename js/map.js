@@ -63,7 +63,6 @@ function map(voteType) {
             .attr("d", path)
             .attr("class", "constituency-boundary");
     });
-
     $("#mapsvg").height(height - 350);
 }
 
