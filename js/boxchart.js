@@ -46,7 +46,7 @@ function boxchart(yes, no) {
         .attr("x", 7)
         .attr("y", 18)
         .style("fill", "#ffffff")
-        .style("font-size", 12)
+        .style("font-size", 16)
         .style("font-family", "Tahoma")
         .text("YES " + data1[0] + "%");
 
@@ -57,7 +57,7 @@ function boxchart(yes, no) {
         .attr("x", 153)
         .attr("y", 18)
         .style("fill", "#ffffff")
-        .style("font-size", 12)
+        .style("font-size", 16)
         .style("font-family", "Tahoma")
         .text("NO " + data2[0] + "%");
 }
