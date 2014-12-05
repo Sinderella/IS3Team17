@@ -1,58 +1,30 @@
+function barchart(graph, selected) {
+    var dataset = [];
+    var k = 0;
+    for (var i = 0; i < json.objects.lad.geometries.length; ++i) {
+        for (var j = 0; j < selectedID.length; ++j) {
+            if (json.objects.lad.geometries[i].properties.LAD13NM == selectedID[j]) {
+                var consData = {
+                    "city": selectedID[j],
+                    "yes": ((json.objects.lad.geometries[i].properties.yes / (json.objects.lad.geometries[i].properties.numberOfVotes)) * 100).toFixed(2),
+                    "no": ((json.objects.lad.geometries[i].properties.no / (json.objects.lad.geometries[i].properties.numberOfVotes)) * 100).toFixed(2),
+                    "value1": json.objects.lad.geometries[i].properties[selected[0]]
+                }
+                if ($('#radioYes').is(':checked')) {
+                    var voteType = YES_TYPE;
+                    consData.color = getColorByVote(voteType, consData.yes);
+                } else {
+                    var voteType = NO_TYPE;
+                    consData.color = getColorByVote(voteType, consData.no);
+                }
+                dataset[k++] = consData;
+            }
+        }
+    }
 
-function barchart(graph) {
-    var dataset = [{
-        "city": "Aberdeen City",
-        "color": '#f77c7c',
-        "vote": 58,
-        "value": 11
-    }, {
-        "city": "Aberdeen Shire",
-        "color": '#f76363',
-        "vote": 60,
-        "value": 20
-    }, {
-        "city": "Angus",
-        "color": '#f77c7c',
-        "vote": 56,
-        "value": 16
-    }, {
-        "city": "Argyll & Bute",
-        "color": '#f77c7c',
-        "vote": 58,
-        "value": 25
-    }, {
-        "city": "Clackmannanshire",
-        "color": '#f7adad',
-        "vote": 53,
-        "value": 3
-    }, {
-        "city": "Comhairle Nan Eilean Siar",
-        "color": '#f7adad',
-        "vote": 53,
-        "value": 6
-    }, {
-        "city": "East Ayrshire",
-        "color": '#f7adad',
-        "vote": 53,
-        "value": 45
-    }, {
-        "city": "East Lothian",
-        "color": '#f7adad',
-        "vote": 53,
-        "value": 8
-    }, {
-        "city": "Orkney",
-        "color": '#f7adad',
-        "vote": 53,
-        "value": 11
-    }, {
-        "city": "Perth & Kinross",
-        "color": '#f7adad',
-        "vote": 53,
-        "value": 23
-    }];
-
-    var data_max = 50;
+    var datamax = d3.max(dataset, function(d) {
+        return d.value1;
+    });
 
     var margin = {
             top: 20,
@@ -64,7 +36,7 @@ function barchart(graph) {
         height = 250 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal()
-        .domain([0, data_max])
+        .domain([0, datamax])
         .rangeRoundBands([0, width], .1);
 
     var y = d3.scale.linear()
@@ -82,7 +54,7 @@ function barchart(graph) {
     var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
-        .html(function (d) {
+        .html(function(d) {
             return "temp msg";
         })
 
@@ -95,19 +67,19 @@ function barchart(graph) {
 
     svg.call(tip);
 
-    x.domain(dataset.map(function (d) {
+    x.domain(dataset.map(function(d) {
         return d.city;
     }));
-    var x0 = x.domain(dataset.sort(function (a, b) {
-        return b.vote - a.vote;
-    })
-        .map(function (d) {
-            return d.city;
-        }))
+    var x0 = x.domain(dataset.sort(function(a, b) {
+                return b.vote - a.vote;
+            })
+            .map(function(d) {
+                return d.city;
+            }))
         .copy();
 
-    y.domain([0, d3.max(dataset, function (d) {
-        return d.value;
+    y.domain([0, d3.max(dataset, function(d) {
+        return d.value1;
     })]);
 
     svg.append("svg:g")
@@ -131,17 +103,17 @@ function barchart(graph) {
         .data(dataset)
         .enter().append("svg:rect")
         .attr("class", "bar")
-        .attr("x", function (d) {
+        .attr("x", function(d) {
             return x(d.city);
         })
         .attr("width", x.rangeBand())
-        .attr("y", function (d) {
-            return y(d.value);
+        .attr("y", function(d) {
+            return y(d.value1);
         })
-        .attr("height", function (d) {
-            return height - y(d.value);
+        .attr("height", function(d) {
+            return height - y(d.value1);
         })
-        .style("fill", function (d) {
+        .style("fill", function(d) {
             return d.color;
         })
         .on('mouseover', tip.show)

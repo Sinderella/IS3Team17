@@ -45,7 +45,7 @@ function newGraph() {
         $('#newGraph' + graphNo).empty();
         $('#newGraph' + graphNo).append("<button onclick=\"deleteGraph(" + graphNo + ")\" class='buttonhide' style=\"padding: 0px; width: 60px; height: 30px; margin-bottom: 0px;\"><p> Remove </p></button>");
         if (selected.length == 1){
-            barchart("#newGraph" + graphNo);
+            barchart("#newGraph" + graphNo, selected);
         }else if (selected.length == 2){
             scatterplot("#newGraph" + graphNo, selected, false);
         }else{
