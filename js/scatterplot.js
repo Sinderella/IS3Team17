@@ -6,19 +6,44 @@ function scatterplot(graph, selected, isBubble) {
             if (json.objects.lad.geometries[i].properties.LAD13NM == selectedID[j]) {
                 var consData = {
                     "city": selectedID[j],
-                    "color": '#f77c7c',
-                    "key1": selected[0],
+                    "yes": ((json.objects.lad.geometries[i].properties.yes / (json.objects.lad.geometries[i].properties.numberOfVotes)) * 100).toFixed(2),
+                    "no": ((json.objects.lad.geometries[i].properties.no / (json.objects.lad.geometries[i].properties.numberOfVotes)) * 100).toFixed(2),
                     "value1": json.objects.lad.geometries[i].properties[selected[0]],
-                    "key2": selected[1],
                     "value2": json.objects.lad.geometries[i].properties[selected[1]]
                 }
-                if (isBubble) {
-                	consData.key3 = selected[2];
+                if (isBubble)
                     consData.value3 = json.objects.lad.geometries[i].properties[selected[2]];
+                if ($('#radioYes').is(':checked')) {
+                    var voteType = YES_TYPE;
+                    consData.color = getColorByVote(voteType, consData.yes);
+                }
+                else {
+                    var voteType = NO_TYPE;
+                    consData.color = getColorByVote(voteType, consData.no);
                 }
                 dataset[k++] = consData;
             }
         }
+    }
+
+    var labels = [];
+    for (var i = 0; i < 3; ++i) {
+        if (selected[i] == "incomeDomainRate")
+            labels[i] = "Income Domain Rate Percentage";
+        else if (selected[i] == "incomeDeprivedPeople")
+            labels[i] = "No. of Income Deprived People";
+        else if (selected[i] == "employmentDomainRate")
+            labels[i] = "Employment Domain Rate Percentage";
+        else if (selected[i] == "employmentDeprivedPeople")
+            labels[i] = "No. of Employment Deprived People";
+        else if (selected[i] == "bestFitWorkingAgePopulation")
+            labels[i] = "Best Fit Working Age Population";
+        else if (selected[i] == "estimatedPopulation")
+            labels[i] = "Estimated Population";
+        else if (selected[i] == "area")
+            labels[i] = "Area Density";
+        else if (selected[i] == "councilExpenditurePerCapita")
+            labels[i] = "Council Expenditure Per Capita";
     }
 
     var datamax = null;
@@ -68,7 +93,26 @@ function scatterplot(graph, selected, isBubble) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-            return selected[2];
+            var str = d.city + "<br>yes " + d.yes + "% : no " + d.no + "%<br>";
+
+            value1 = d.value1;
+            if (value1 % 1 !== 0)
+                value1 = value1.toFixed(2);
+            str += labels[0] + ": " + value1 + "<br>";
+
+            value2 = d.value2;
+            if (value2 % 1 !== 0)
+                value2 = value2.toFixed(2);
+            str += labels[1] + ": " + value2 + "<br>";
+
+            if (isBubble) {
+                value3 = d.value3;
+                if (value3 % 1 !== 0)
+                    value3 = value3.toFixed(2);
+                str += labels[2] + ": " + value3;
+            }
+
+            return str;
         })
 
 
@@ -90,9 +134,6 @@ function scatterplot(graph, selected, isBubble) {
     xScale.domain([d3.min(dataset, xValue) - 10, d3.max(dataset, xValue) + 10]);
     yScale.domain([d3.min(dataset, yValue) - 10, d3.max(dataset, yValue) + 10]);
 
-    var xLabel = "";
-    // if (selected[0] == )
-
     // x-axis
     svg.append("svg:g")
         .attr("class", "x axis")
@@ -103,7 +144,7 @@ function scatterplot(graph, selected, isBubble) {
         .attr("x", width)
         .attr("y", -6)
         .style("text-anchor", "end")
-        .text(selected[0]);
+        .text(labels[0]);
 
     // y-axis
     svg.append("svg:g")
@@ -115,7 +156,7 @@ function scatterplot(graph, selected, isBubble) {
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text(selected[1]);
+        .text(labels[1]);
 
     // draw dots
     svg.selectAll(".dot")
