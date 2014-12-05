@@ -31,6 +31,7 @@ function filterList() {
 function newGraph() {
     var selected = $('#jstree').jstree("get_checked", null, true);
     var tmpIndex = selected.indexOf("j1_4");
+    var checked_ids = []; 
     if (tmpIndex > -1) {
         selected.splice(tmpIndex, 1);
     }
@@ -46,9 +47,9 @@ function newGraph() {
         if (selected.length == 1){
             barchart("#newGraph" + graphNo);
         }else if (selected.length == 2){
-            scatterplot("#newGraph" + graphNo, false);
+            scatterplot("#newGraph" + graphNo, selected, false);
         }else{
-            scatterplot("#newGraph" + graphNo, true);
+            scatterplot("#newGraph" + graphNo, selected, true);
         }
 
         graphNo++;
