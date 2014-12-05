@@ -93,7 +93,10 @@ function changeMapColor() {
 
     $('.constituency').each(function (path) {
         properties = json.objects.lad.geometries[loop].properties;
-        percent = properties.yes * 1.0 / properties.numberOfVotes * 100;
+        if (voteType == YES_TYPE)
+            percent = properties.yes * 1.0 / properties.numberOfVotes * 100;
+        else
+            percent = properties.no * 1.0 / properties.numberOfVotes * 100;
         color = '#95a5a6';
         if (selectedID.indexOf(properties.LAD13NM) > -1) {
             color = getColorByVote(voteType, percent);
