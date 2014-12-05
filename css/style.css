@@ -169,3 +169,14 @@
 text {
 	font-size: 0.5rem;
 }
+
+.buttonhide {
+	cursor: pointer;
+	width: auto;
+	display: none;
+	float: right;
+}
+
+.delete-button:hover .buttonhide {
+	display: inherit;
+}

@@ -31,7 +31,6 @@ function filterList() {
 function newGraph() {
     var selected = $('#jstree').jstree("get_checked", null, true);
     var tmpIndex = selected.indexOf("j1_4");
-    var checked_ids = []; 
     if (tmpIndex > -1) {
         selected.splice(tmpIndex, 1);
     }
@@ -44,6 +43,7 @@ function newGraph() {
     } else {
         //$('#newGraph' + graphNo).html('<img src="https://www.google.co.uk/logos/2012/birthday12-thp.png">');
         $('#newGraph' + graphNo).empty();
+        $('#newGraph' + graphNo).append("<button onclick=\"deleteGraph(" + graphNo + ")\" class='buttonhide' style=\"padding: 0px; width: 60px; height: 30px; margin-bottom: 0px;\"><p> Remove </p></button>");
         if (selected.length == 1){
             barchart("#newGraph" + graphNo);
         }else if (selected.length == 2){
@@ -56,5 +56,15 @@ function newGraph() {
         $("#graphArea").append('<li id="newGraph' + graphNo + '"><a href="#" data-reveal-id="addModal"><img src="img/plus.jpg"></a></li>');
         $('.close-reveal-modal').click();
         $('#jstree').jstree("uncheck_all");
+    }
+}
+
+function deleteGraph(delgraphNo) {
+    $('#newGraph' + delgraphNo).remove();
+    graphNo--;
+    var i = 0;
+    var lis = $('#graphArea').find("li");
+    for (i = 0; i < lis.length; i++) {
+        $(lis[i]).attr('id', 'newGraph' + i);
     }
 }

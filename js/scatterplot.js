@@ -135,4 +135,6 @@ function scatterplot(graph, selected, isBubble) {
         })
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
+
+    $(graph).addClass("delete-button");
 }
